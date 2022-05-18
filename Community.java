@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Community{
+public class Community implements Interface{
 	private String creator;
 	private String communityname;
 	private String description;
@@ -83,5 +83,11 @@ public class Community{
 
 	public void setCommunityusers(ArrayList<String> communityusers) {
 		this.communityusers = communityusers;
+	}
+
+
+	@Override
+	public String getId() {
+		return communityname;
 	}
 }

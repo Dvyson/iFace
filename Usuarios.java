@@ -1,7 +1,8 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Usuarios extends Person{
+public class Usuarios extends Person implements Interface{
 
 	public ArrayList<String> friends = new ArrayList<String>();
 	public ArrayList<String> newfriends = new ArrayList<String>();
@@ -13,31 +14,33 @@ public class Usuarios extends Person{
 	public ArrayList<String> mycommunities = new ArrayList<String>();
 	
 	
-	public void CreateNewAccount() {
-		
+	public void CreateNewAccount() throws Exception {
+
 		Scanner scanner = new Scanner(System.in);
-		
 		System.out.println("Login:");
 		login = scanner.nextLine();
-		
+
 		System.out.println("User name:");
 		name = scanner.nextLine();
-		
+
 		System.out.println("Password:");
-		setPassword(scanner.nextLine());
-		
+		setPassword(scanner.next());
+		scanner.nextLine();
 	}
 
-	
-	
+
 	public void CreateProfile() {
 		
 		Scanner scanner = new Scanner(System.in);
-		
-		System.out.println("Age:");
-		age = scanner.nextInt();
-		scanner.nextLine();
-		
+
+		try {
+			System.out.println("Age:");
+			age = scanner.nextInt();
+		}catch (InputMismatchException e){
+			System.out.println("Wrong input! Try again.");
+			scanner.nextLine();
+		}
+
 		System.out.println("City:");
 		city = scanner.nextLine();
 		
@@ -225,7 +228,10 @@ public class Usuarios extends Person{
 		
 	}
 
-	
+	@Override
+	public String getId() {
+		return login;
+	}
 }
 
 

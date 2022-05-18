@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.*;
 
 public class iFace{
 	
-	public void menu() {
+	public void menu() throws Exception{
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -14,12 +15,14 @@ public class iFace{
 
 		java.util.ArrayList<Usuarios> users = new java.util.ArrayList<Usuarios>();
 
-		while (input != 0) {
-
-
-			input = scanner.nextInt();
-
-			scanner.nextLine();
+		while(input != 0){
+			try{
+				input = scanner.nextInt();
+				scanner.nextLine();
+			}catch (InputMismatchException e){
+				System.out.println("Wrong input! Try again. ");
+				scanner.nextLine();
+			}
 
 			switch (input) {
 
@@ -40,7 +43,6 @@ public class iFace{
 					String password = null;
 					System.out.println("Login:");
 					String login = scanner.nextLine();
-
 					for (i = 0; i < users.size(); i++) {
 						if (login.equals(users.get(i).login)) {
 							id = i;
@@ -50,7 +52,6 @@ public class iFace{
 							break;
 						}
 					}
-
 					if (flag0 == 0) {
 						System.out.println("Sorry, Not found. Try again!\n");
 						break;
