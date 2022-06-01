@@ -32,9 +32,7 @@ public class iFace{
 					user.CreateNewAccount();
 					user.CreateProfile();
 					users.add(user);
-
 					System.out.println("New account created!\n\n");
-
 					break;
 
 				case 2:
@@ -63,8 +61,13 @@ public class iFace{
 
 						while (inputcase2 != 12) {
 
-							inputcase2 = scanner.nextInt();
-							scanner.nextLine();
+							try{
+								inputcase2 = scanner.nextInt();
+								scanner.nextLine();
+							}catch (InputMismatchException e){
+								System.out.println("Wrong input! Try again. ");
+								scanner.nextLine();
+							}
 
 							switch (inputcase2) {
 

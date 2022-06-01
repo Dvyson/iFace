@@ -61,10 +61,14 @@ public class Usuarios extends Person implements Interface{
 		switch(editinput) {
 		
 			case 1:
-				System.out.println("Age:");
-				age = scanner.nextInt();
-				scanner.nextLine();
-				System.out.println("Done!");
+				try {
+					System.out.println("Age:");
+					age = scanner.nextInt();
+					System.out.println("Done!");
+				}catch (InputMismatchException e){
+					System.out.println("Wrong input! Try again.");
+					scanner.nextLine();
+				}
 				break;
 			
 			case 2:
@@ -80,10 +84,15 @@ public class Usuarios extends Person implements Interface{
 				break;
 			
 			case 4:
-				System.out.println("Age:");
-				age = scanner.nextInt();
-				scanner.nextLine();
-				
+
+				try {
+					System.out.println("Age:");
+					age = scanner.nextInt();
+				}catch (InputMismatchException e){
+					System.out.println("Wrong input! Try again.");
+					scanner.nextLine();
+				}
+
 				System.out.println("City:");
 				city = scanner.nextLine();
 				
